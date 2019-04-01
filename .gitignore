@@ -1,2 +1,3 @@
 .DStore
-css/
+/css
+/node_modules/
