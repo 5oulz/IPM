@@ -1,0 +1,42 @@
+<section id="events-main" class="functionality-screen event-screen">
+    <section class="nav-fn"></section>
+    <section class="event-screen selection active">
+        <ul class="event-list">
+            {{#each events}}
+            <li data-event="{{meta}}" class="event-item">
+                <p class="event-item-name">{{name}}</p>
+                <p class="event-item-date">{{date}}</p>
+            </li>
+            {{/each}}
+        </ul>
+        {{#each events}}
+        <aside data-event="{{meta}}" class="event-description">
+            <p class="event-time">{{startTime}}</p>
+            <p class="event-local">{{local}}</p>
+            <button class="event-confirm icon-ok"></button>
+        </aside>
+        {{/each}}
+    </section>
+    <section class="event-screen nfc-use">
+        {{#each events}}
+        <div class="nfc-block" data-event="{{meta}}">
+            <div class="title">{{name}}</div>
+            <div class="date">{{date}}</div>
+            <div class="startTime">{{startTime}}</div>
+            <p class="instructions">Please approach your device from the NFC reader to enter your event</p>
+        </div>
+        {{/each}}
+    </section>
+    <section class="event-screen success">
+        <div class="circle confirm icon-ok"></div>
+        <h2>Success!</h2>
+        <p>enjoy your event</p>
+        <button class="close-event-error">Close</button>
+    </section>
+    <section class="event-screen error">
+        <div class="circle error icon-cancel"></div>
+        <h2>Error!</h2>
+        <p>There was an error processing your request</p>
+        <button class="close-event-error">Close</button>
+    </section>
+</section>

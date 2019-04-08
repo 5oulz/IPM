@@ -1,0 +1,20 @@
+{
+  "name": "jquery-plugin",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Rafa <rafaeldiasven@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/5oulz/IPM",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "handlebars": "^4.1.1"
+  }
+}

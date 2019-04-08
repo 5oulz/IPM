@@ -1,0 +1,23 @@
+.iGo-notification-bar {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    font-size: 1.6rem;
+
+    background-color: #464646;
+    z-index: 10;
+
+    div {
+        display: inline-block;
+        position: relative;
+        width: 32px;
+        float: right;
+        text-align: center;
+        color: $white-500;
+
+        &:nth-of-type(2) {
+            text-align: right;
+        }
+    }
+}

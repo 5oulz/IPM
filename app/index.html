@@ -9,17 +9,28 @@
     <title>iGo</title>
 </head>
 <body>
-    <div id="testId" class="iGoFrame">
-        <div class="iGoScreen">
-            <div class="iGoScreen__option"></div>
-            <div class="iGoScreen__option"></div>
-            <div class="iGoScreen__option"></div>
-            <div class="iGoScreen__option"></div>
-            <div class="iGoScreen__option"></div>
-            <div class="iGoScreen__option main"></div>
+    <section class="action-simulator-wrapper">
+        <h1>Action simulator</h1>
+        <p>Choose an action to simulate</p>
+        <div class="button-wrapper">
+            <button class="simulate-nfc-success">NFC Success Events</button>
+            <button class="simulate-nfc-error">NFC Error Events</button>
+        </div>
+    </section>
+    <div id="iGoFrame" class="iGoFrame">
+        <div id="iGo-screen" class="iGoScreen">
+            <section class="iGo-notification-bar">
+                <div class="icon-battery-2"></div>
+                <div class="icon-wifi"></div>
+            </section>
         </div>
     </div>
     <script data-main="scripts/main" src="scripts/jquery-3.3.1.min.js"></script>
+    <script data-main="scripts/main" src="scripts/handlebars-v4.1.1.js"></script>
+    <script data-main="scripts/main" src="scripts/templates.js"></script>
+    <script data-main="scripts/main" src="scripts/events.js"></script>
+    <script data-main="scripts/main" src="scripts/iGo.js"></script>
+    <script data-main="scripts/main" src="scripts/lockscreen.js"></script>
     <script data-main="scripts/main" src="scripts/main.js"></script>
 </body>
 </html>

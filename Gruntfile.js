@@ -25,28 +25,6 @@ module.exports = function(grunt) {
             files: ['dist'],
             server: '.tmp'
         },
-        concat: {
-            options: {
-                banner: '<%= banner %>',
-                stripBanners: true
-            },
-            dist: {
-                src: ['src/jquery.<%= pkg.name %>.js'],
-                dest: 'dist/jquery.<%= pkg.name %>.js'
-            },
-        },
-        uglify: {
-            options: {
-                banner: '<%= banner %>'
-            },
-            dist: {
-                src: '<%= concat.dist.dest %>',
-                dest: 'dist/jquery.<%= pkg.name %>.min.js'
-            },
-        },
-        qunit: {
-            files: ['test/**/*.html']
-        },
         jshint: {
             options: {
                 jshintrc: true
@@ -91,10 +69,14 @@ module.exports = function(grunt) {
                     '{.tmp,<%= IPM.app %>}/styles/{,*/}{,*/}*.css',
                     '{.tmp,<%= IPM.app %>}/scripts/{,*/}*{,*/}*.js',
                     '<%= IPM.app %>/images/{,*/}{,*/}*.{png,jpg,jpeg,gif,webp}',
-                    '<%= IPM.app %>/scripts/templates/{,*/}{,*/}*.{ejs,mustache,hbs}',
+                    //'<%= IPM.app %>/templates/{,*/}{,*/}*.{ejs,mustache,hbs}',
                     'test/spec/**/*.js'
                 ]
             },
+            handlebars: {
+                files: ['<%= IPM.app %>/templates/*.hbs'],
+                tasks: ['handlebars']
+            }
         },
         connect: {
             options: {
@@ -134,16 +116,28 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+        handlebars: {
+            compile: {
+                options: {
+                    namespace: 'myApp.templates',
+                    processName: function(filePath) {
+                        var pieces = filePath.split('/');
+                        return pieces[pieces.length - 1].split('.')[0];
+                    }
+                },
+                files: {
+                    '<%= IPM.app %>/scripts/templates.js': '<%= IPM.app %>/templates/*.hbs'
+                }
+            }
+        }
     });
 
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-contrib-handlebars');
     grunt.loadNpmTasks('grunt-serve');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-open');

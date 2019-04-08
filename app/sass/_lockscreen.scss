@@ -1,0 +1,16 @@
+.lock-screen {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: $white-500;
+    align-items: center;
+    justify-content: center;
+    background-color: #464646;
+    transition: transform 0.33s ease-out;
+    z-index: 5;
+
+    &.unlocked {
+        transform: translateY(-100%);
+    }
+}
